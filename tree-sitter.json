@@ -1,0 +1,42 @@
+{
+  "grammars": [
+    {
+      "name": "MaeBrooks/gren",
+      "camelcase": "MaeBrooksGren",
+      "scope": "source.gren",
+      "path": ".",
+      "highlights": "queries/highlights.scm",
+      "file-types": [
+        "gren"
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree sitter definitions for gren",
+    "authors": [
+      {
+        "name": "Mae Brooks"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/MaeBrooks/tree-sitter-gren"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.gren",
+      "file-types": ["gren"],
+      "first-line-regex": "#!.*\\gren$"
+    }
+  ]
+}

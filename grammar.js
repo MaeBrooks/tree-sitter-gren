@@ -7,7 +7,7 @@ const PREC = {
   FIELD_ACCESS_START: 1,
   PART: 1,
   FUNCTION_START: 1,
-  CASE_OF_BRANCH: 6,
+  WHEN_IS_BRANCH: 6,
   FUNC: 10,
 };
 
@@ -17,7 +17,7 @@ module.exports = grammar({
   conflicts: ($) => [
     [$.upper_case_qid, $.value_qid],
     [$.function_call_expr],
-    [$.case_of_expr],
+    [$.when_is_expr],
     [$._function_call_target, $._atom],
   ],
 
@@ -365,7 +365,7 @@ module.exports = grammar({
         $.list_expr,
         $.record_expr,
         $.if_else_expr,
-        $.case_of_expr,
+        $.when_is_expr,
         $.let_in_expr,
         $.anonymous_function_expr,
       ),
@@ -508,37 +508,61 @@ module.exports = grammar({
     _then: ($) => seq("then", field("exprList", $._expression)),
     _else: ($) => seq("else", field("exprList", $._expression)),
 
-    case_of_expr: ($) =>
+    when_is_expr: ($) =>
       choice(
         seq(
           "(",
-          $.case,
+          $.when,
           field("expr", $._expression),
-          $.of,
+          $.is,
           $._virtual_open_section,
-          field("branch", $.case_of_branch),
-          optional($._more_case_of_branches),
+          field("branch", $.when_is_branch),
+          optional($._more_when_is_branches),
           optional($._virtual_end_section),
           ")"
         ),
         seq(
-          $.case,
+          $.when,
           field("expr", $._expression),
-          $.of,
+          $.is,
           $._virtual_open_section,
-          field("branch", $.case_of_branch),
-          optional($._more_case_of_branches),
+          field("branch", $.when_is_branch),
+          optional($._more_when_is_branches),
+          $._virtual_end_section
+        )
+      ),
+      
+    when_is_expr: ($) =>
+      choice(
+        seq(
+          "(",
+          $.when,
+          field("expr", $._expression),
+          $.is,
+          $._virtual_open_section,
+          field("branch", $.when_is_branch),
+          optional($._more_when_is_branches),
+          optional($._virtual_end_section),
+          ")"
+        ),
+        seq(
+          $.when,
+          field("expr", $._expression),
+          $.is,
+          $._virtual_open_section,
+          field("branch", $.when_is_branch),
+          optional($._more_when_is_branches),
           $._virtual_end_section
         )
       ),
 
-    _more_case_of_branches: ($) =>
+    _more_when_is_branches: ($) =>
       prec.dynamic(
-        PREC.CASE_OF_BRANCH,
-        repeat1(seq($._virtual_end_decl, field("branch", $.case_of_branch)))
+        PREC.WHEN_IS_BRANCH,
+        repeat1(seq($._virtual_end_decl, field("branch", $.when_is_branch)))
       ),
 
-    case_of_branch: ($) =>
+    when_is_branch: ($) =>
       seq(field("pattern", $.pattern), $.arrow, field("expr", $._expression)),
 
     let_in_expr: ($) =>
@@ -660,8 +684,8 @@ module.exports = grammar({
     import: ($) => "import",
     as: ($) => "as",
     exposing: ($) => "exposing",
-    case: ($) => "case",
-    of: ($) => "of",
+    when: ($) => "when",
+    is: ($) => "is",
     type: ($) => "type",
     alias: ($) => "alias",
     port: ($) => "port",

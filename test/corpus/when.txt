@@ -1,9 +1,9 @@
 ================================================================================
-Case with one branch
+When with one branch
 ================================================================================
 
 update msg =
-    case msg of
+    when msg is
         Nothing ->
             Nothing
 
@@ -16,13 +16,13 @@ update msg =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -33,11 +33,11 @@ update msg =
             (upper_case_identifier)))))))
 
 ================================================================================
-Case with one branch and comment
+With with one branch and comment
 ================================================================================
 
 update msg value =
-  case value of
+  when value is
     S ->
       value -- Debug
 
@@ -52,13 +52,13 @@ update msg value =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -70,11 +70,11 @@ update msg value =
       (line_comment))))
 
 ================================================================================
-Case with one branch and comment on next line
+With with one branch and comment on next line
 ================================================================================
 
 update msg value =
-  case value of
+  when value is
     S ->
       value
 
@@ -91,13 +91,13 @@ update msg value =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -109,11 +109,11 @@ update msg value =
   (line_comment))
 
 ================================================================================
-Case with two branches
+With with two branches
 ================================================================================
 
 update msg model =
-    case msg of
+    when msg is
         Increment ->
             model + 1
 
@@ -131,13 +131,13 @@ update msg model =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -151,7 +151,7 @@ update msg model =
             (operator_identifier))
           (number_constant_expr
             (number_literal))))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -167,12 +167,12 @@ update msg model =
             (number_literal)))))))
 
 ================================================================================
-Case with anonymous function
+With with anonymous function
 ================================================================================
 
 enum =
     \stringList ->
-        case stringList of
+        when stringList is
             [ str ] ->
                 get str dict
 
@@ -192,13 +192,13 @@ enum =
         (lower_pattern
           (lower_case_identifier)))
       (arrow)
-      (case_of_expr
-        (case)
+      (when_is_expr
+        (when)
         (value_expr
           (value_qid
             (lower_case_identifier)))
-        (of)
-        (case_of_branch
+        (is)
+        (when_is_branch
           (pattern
             (list_pattern
               (pattern
@@ -215,7 +215,7 @@ enum =
             (value_expr
               (value_qid
                 (lower_case_identifier)))))
-        (case_of_branch
+        (when_is_branch
           (pattern
             (anything_pattern
               (underscore)))
@@ -225,12 +225,12 @@ enum =
               (upper_case_identifier))))))))
 
 ================================================================================
-Case with three branches
+With with three branches
 ================================================================================
 
 src : Avatar -> Attribute msg
 src (Avatar maybeUrl)=
-    case maybeUrl of
+    when maybeUrl is
         Nothing ->
             Asset.src Asset.defaultAvatar
 
@@ -267,13 +267,13 @@ src (Avatar maybeUrl)=
           (lower_pattern
             (lower_case_identifier)))))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -290,7 +290,7 @@ src (Avatar maybeUrl)=
               (upper_case_identifier)
               (dot)
               (lower_case_identifier)))))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -310,7 +310,7 @@ src (Avatar maybeUrl)=
               (upper_case_identifier)
               (dot)
               (lower_case_identifier)))))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -331,16 +331,16 @@ src (Avatar maybeUrl)=
               (lower_case_identifier))))))))
 
 ================================================================================
-Function statement with nested case
+Function statement with nested when
 ================================================================================
 
 map3 func ma mb mc =
-    case ma of
+    when ma is
         Nothing ->
             Nothing
 
         Just a ->
-            case mb of
+            when mb is
                 Nothing ->
                     Nothing
 
@@ -349,7 +349,7 @@ map3 func ma mb mc =
 
 
 map4 func ma mb mc md =
-    case ma of
+    when ma is
         Nothing ->
             Nothing
 
@@ -373,13 +373,13 @@ map4 func ma mb mc md =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -388,7 +388,7 @@ map4 func ma mb mc md =
         (value_expr
           (upper_case_qid
             (upper_case_identifier))))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -396,13 +396,13 @@ map4 func ma mb mc md =
             (lower_pattern
               (lower_case_identifier))))
         (arrow)
-        (case_of_expr
-          (case)
+        (when_is_expr
+          (when)
           (value_expr
             (value_qid
               (lower_case_identifier)))
-          (of)
-          (case_of_branch
+          (is)
+          (when_is_branch
             (pattern
               (union_pattern
                 (upper_case_qid
@@ -411,7 +411,7 @@ map4 func ma mb mc md =
             (value_expr
               (upper_case_qid
                 (upper_case_identifier))))
-          (case_of_branch
+          (when_is_branch
             (pattern
               (union_pattern
                 (upper_case_qid
@@ -436,13 +436,13 @@ map4 func ma mb mc md =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -451,7 +451,7 @@ map4 func ma mb mc md =
         (value_expr
           (upper_case_qid
             (upper_case_identifier))))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -464,11 +464,11 @@ map4 func ma mb mc md =
             (lower_case_identifier)))))))
 
 ================================================================================
-Case int result
+With int result
 ================================================================================
 
 toIntResult s =
-    case String.toInt s of
+    when String.toInt s is
         Just i ->
             Ok i
         Nothing ->
@@ -482,8 +482,8 @@ toIntResult s =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (function_call_expr
         (value_expr
           (value_qid
@@ -493,8 +493,8 @@ toIntResult s =
         (value_expr
           (value_qid
             (lower_case_identifier))))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -509,7 +509,7 @@ toIntResult s =
           (value_expr
             (value_qid
               (lower_case_identifier)))))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -538,11 +538,11 @@ toIntResult s =
             (close_quote)))))))
 
 ================================================================================
-Case with list
+With with list
 ================================================================================
 enum key dict =
   custom key <| \stringList ->
-    case stringList of
+    when stringList is
       [str] ->
         Dict.get str dict
 
@@ -576,13 +576,13 @@ enum key dict =
           (lower_pattern
             (lower_case_identifier)))
         (arrow)
-        (case_of_expr
-          (case)
+        (when_is_expr
+          (when)
           (value_expr
             (value_qid
               (lower_case_identifier)))
-          (of)
-          (case_of_branch
+          (is)
+          (when_is_branch
             (pattern
               (list_pattern
                 (pattern
@@ -601,7 +601,7 @@ enum key dict =
               (value_expr
                 (value_qid
                   (lower_case_identifier)))))
-          (case_of_branch
+          (when_is_branch
             (pattern
               (anything_pattern
                 (underscore)))
@@ -611,13 +611,13 @@ enum key dict =
                 (upper_case_identifier)))))))))
 
 ================================================================================
-Nested case
+Nested when
 ================================================================================
 
 func a b =
-    case a of
+    when a is
         Nothing ->
-            case b of
+            when b is
                 1 ->
                     ""
                 2 ->
@@ -636,25 +636,25 @@ func a b =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
               (upper_case_identifier))))
         (arrow)
-        (case_of_expr
-          (case)
+        (when_is_expr
+          (when)
           (value_expr
             (value_qid
               (lower_case_identifier)))
-          (of)
-          (case_of_branch
+          (is)
+          (when_is_branch
             (pattern
               (number_constant_expr
                 (number_literal)))
@@ -662,7 +662,7 @@ func a b =
             (string_constant_expr
               (open_quote)
               (close_quote)))
-          (case_of_branch
+          (when_is_branch
             (pattern
               (number_constant_expr
                 (number_literal)))
@@ -670,7 +670,7 @@ func a b =
             (string_constant_expr
               (open_quote)
               (close_quote)))
-          (case_of_branch
+          (when_is_branch
             (pattern
               (number_constant_expr
                 (number_literal)))
@@ -680,25 +680,25 @@ func a b =
               (close_quote))))))))
 
 ================================================================================
-Nested case are all closed?
+Nested when are all closed?
 ================================================================================
 
 func a b =
-    case a of
+    when a is
         Nothing ->
-            case b of
+            when b is
                 1 ->
                     ""
                 2 ->
                     ""
                 3 ->
-                    case b of
+                    when b is
                         1 ->
                             ""
                         2 ->
                             ""
                         3 ->
-                            case b of
+                            when b is
                                 1 ->
                                     ""
                                 2 ->
@@ -717,25 +717,25 @@ func a b =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
               (upper_case_identifier))))
         (arrow)
-        (case_of_expr
-          (case)
+        (when_is_expr
+          (when)
           (value_expr
             (value_qid
               (lower_case_identifier)))
-          (of)
-          (case_of_branch
+          (is)
+          (when_is_branch
             (pattern
               (number_constant_expr
                 (number_literal)))
@@ -743,7 +743,7 @@ func a b =
             (string_constant_expr
               (open_quote)
               (close_quote)))
-          (case_of_branch
+          (when_is_branch
             (pattern
               (number_constant_expr
                 (number_literal)))
@@ -751,18 +751,18 @@ func a b =
             (string_constant_expr
               (open_quote)
               (close_quote)))
-          (case_of_branch
+          (when_is_branch
             (pattern
               (number_constant_expr
                 (number_literal)))
             (arrow)
-            (case_of_expr
-              (case)
+            (when_is_expr
+              (when)
               (value_expr
                 (value_qid
                   (lower_case_identifier)))
-              (of)
-              (case_of_branch
+              (is)
+              (when_is_branch
                 (pattern
                   (number_constant_expr
                     (number_literal)))
@@ -770,7 +770,7 @@ func a b =
                 (string_constant_expr
                   (open_quote)
                   (close_quote)))
-              (case_of_branch
+              (when_is_branch
                 (pattern
                   (number_constant_expr
                     (number_literal)))
@@ -778,18 +778,18 @@ func a b =
                 (string_constant_expr
                   (open_quote)
                   (close_quote)))
-              (case_of_branch
+              (when_is_branch
                 (pattern
                   (number_constant_expr
                     (number_literal)))
                 (arrow)
-                (case_of_expr
-                  (case)
+                (when_is_expr
+                  (when)
                   (value_expr
                     (value_qid
                       (lower_case_identifier)))
-                  (of)
-                  (case_of_branch
+                  (is)
+                  (when_is_branch
                     (pattern
                       (number_constant_expr
                         (number_literal)))
@@ -797,7 +797,7 @@ func a b =
                     (string_constant_expr
                       (open_quote)
                       (close_quote)))
-                  (case_of_branch
+                  (when_is_branch
                     (pattern
                       (number_constant_expr
                         (number_literal)))
@@ -805,7 +805,7 @@ func a b =
                     (string_constant_expr
                       (open_quote)
                       (close_quote)))
-                  (case_of_branch
+                  (when_is_branch
                     (pattern
                       (number_constant_expr
                         (number_literal)))
@@ -815,16 +815,16 @@ func a b =
                       (close_quote))))))))))))
 
 ================================================================================
-Complex case
+Complex when
 ================================================================================
 
 makeEdit cursor desc =
-    case desc of
+    when desc is
         OneOf details ->
-            case cursor.makeEdit cursor.indentation (foundStart details.child) desc of
+            when cursor.makeEdit cursor.indentation (foundStart details.child) desc is
                 NoIdFound ->
                     -- dive further
-                    case makeFoundEdit (increaseIndent cursor) details.child of
+                    when makeFoundEdit (increaseIndent cursor) details.child is
                         EditMade maybeSeed maybePush newFound ->
                             EditMade maybeSeed
                                 maybePush
@@ -854,13 +854,13 @@ makeEdit cursor desc =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -868,8 +868,8 @@ makeEdit cursor desc =
             (lower_pattern
               (lower_case_identifier))))
         (arrow)
-        (case_of_expr
-          (case)
+        (when_is_expr
+          (when)
           (function_call_expr
             (field_access_expr
               (value_expr
@@ -897,16 +897,16 @@ makeEdit cursor desc =
             (value_expr
               (value_qid
                 (lower_case_identifier))))
-          (of)
-          (case_of_branch
+          (is)
+          (when_is_branch
             (pattern
               (union_pattern
                 (upper_case_qid
                   (upper_case_identifier))))
             (arrow)
             (line_comment)
-            (case_of_expr
-              (case)
+            (when_is_expr
+              (when)
               (function_call_expr
                 (value_expr
                   (value_qid
@@ -925,8 +925,8 @@ makeEdit cursor desc =
                       (lower_case_identifier)))
                   (dot)
                   (lower_case_identifier)))
-              (of)
-              (case_of_branch
+              (is)
+              (when_is_branch
                 (pattern
                   (union_pattern
                     (upper_case_qid
@@ -969,7 +969,7 @@ makeEdit cursor desc =
                             (value_expr
                               (value_qid
                                 (lower_case_identifier))))))))))
-              (case_of_branch
+              (when_is_branch
                 (pattern
                   (union_pattern
                     (upper_case_qid
@@ -978,7 +978,7 @@ makeEdit cursor desc =
                 (value_expr
                   (upper_case_qid
                     (upper_case_identifier))))
-              (case_of_branch
+              (when_is_branch
                 (pattern
                   (union_pattern
                     (upper_case_qid
@@ -993,7 +993,7 @@ makeEdit cursor desc =
                   (value_expr
                     (value_qid
                       (lower_case_identifier)))))))
-          (case_of_branch
+          (when_is_branch
             (pattern
               (lower_pattern
                 (lower_case_identifier)))
@@ -1003,13 +1003,13 @@ makeEdit cursor desc =
                 (lower_case_identifier)))))))))
 
 ================================================================================
-Case with one line let
+With with one line let
 ================================================================================
 
 all = describe "parsering"
   [ describe "builtin"
     [ it "does handle suffixed int" <|
-      case (Parser.run parserInt "11h22m33s") of
+      when (Parser.run parserInt "11h22m33s") is
         Err err -> let _ = Debug.log "err" err in isTrue False
         Ok i -> eql 11 i
     ]
@@ -1052,8 +1052,8 @@ all = describe "parsering"
                   (close_quote)))
               (operator
                 (operator_identifier))
-              (case_of_expr
-                (case)
+              (when_is_expr
+                (when)
                 (parenthesized_expr
                   (function_call_expr
                     (value_expr
@@ -1068,8 +1068,8 @@ all = describe "parsering"
                       (open_quote)
                       (regular_string_part)
                       (close_quote))))
-                (of)
-                (case_of_branch
+                (is)
+                (when_is_branch
                   (pattern
                     (union_pattern
                       (upper_case_qid
@@ -1103,7 +1103,7 @@ all = describe "parsering"
                       (value_expr
                         (upper_case_qid
                           (upper_case_identifier))))))
-                (case_of_branch
+                (when_is_branch
                   (pattern
                     (union_pattern
                       (upper_case_qid
@@ -1122,13 +1122,13 @@ all = describe "parsering"
                         (lower_case_identifier)))))))))))))
 
 ================================================================================
-Case wrapped in parenthesis
+With wrapped in parenthesis
 ================================================================================
 
 flipBy how (Plane { width, height } as plane) =
     plane |>
         transform
-            (case how of
+            (when how is
                 Horizontal -> \{x, y} ->
                     { width = width - 1 - x
                     , height = y
@@ -1170,13 +1170,13 @@ flipBy how (Plane { width, height } as plane) =
         (value_expr
           (value_qid
             (lower_case_identifier)))
-        (case_of_expr
-          (case)
+        (when_is_expr
+          (when)
           (value_expr
             (value_qid
               (lower_case_identifier)))
-          (of)
-          (case_of_branch
+          (is)
+          (when_is_branch
             (pattern
               (union_pattern
                 (upper_case_qid
@@ -1214,7 +1214,7 @@ flipBy how (Plane { width, height } as plane) =
                   (value_expr
                     (value_qid
                       (lower_case_identifier)))))))
-          (case_of_branch
+          (when_is_branch
             (pattern
               (union_pattern
                 (upper_case_qid
@@ -1254,13 +1254,13 @@ flipBy how (Plane { width, height } as plane) =
                         (lower_case_identifier)))))))))))))
 
 ================================================================================
-Case with of followed by comment
+When with is followed by comment
 ================================================================================
 
 module Test exposing (..)
 type Maybe a = Just a | Nothing
 func result =
-    case result of
+    when result is
     --^
         Nothing ->
             ""
@@ -1295,14 +1295,14 @@ func result =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
+      (is)
       (line_comment)
-      (case_of_branch
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -1311,7 +1311,7 @@ func result =
         (string_constant_expr
           (open_quote)
           (close_quote)))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid

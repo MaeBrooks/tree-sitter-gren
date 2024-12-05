@@ -6,8 +6,8 @@
     "let"
     "in"
  ] @keyword.control
-(case) @keyword.control
-(of) @keyword.control
+(when) @keyword.control
+(is) @keyword.control
 
 (colon) @keyword.operator
 (backslash) @keyword

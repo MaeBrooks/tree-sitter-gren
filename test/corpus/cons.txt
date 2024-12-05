@@ -3,7 +3,7 @@ Pattern match cons
 ================================================================================
 
 test listList =
-    case listList of
+    when listList is
         [ a, b ] :: _ ->
             let
                 product : Float
@@ -25,13 +25,13 @@ test listList =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (cons_pattern
             (list_pattern
@@ -68,7 +68,7 @@ test listList =
           (value_expr
             (value_qid
               (lower_case_identifier)))))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (anything_pattern
             (underscore)))
@@ -82,7 +82,7 @@ Pattern match multiple cons
 ================================================================================
 
 test listList =
-    case listList of
+    when listList is
         a :: b :: _ ->
             let
                 product : Float
@@ -104,13 +104,13 @@ test listList =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (cons_pattern
             (lower_pattern
@@ -145,7 +145,7 @@ test listList =
           (value_expr
             (value_qid
               (lower_case_identifier)))))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (anything_pattern
             (underscore)))

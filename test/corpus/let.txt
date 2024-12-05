@@ -208,7 +208,7 @@ routeToString : Route -> String
 routeToString page =
     let
         pieces =
-            case page of
+            when page is
                 Home ->
                     []
 
@@ -242,20 +242,20 @@ routeToString page =
         (function_declaration_left
           (lower_case_identifier))
         (eq)
-        (case_of_expr
-          (case)
+        (when_is_expr
+          (when)
           (value_expr
             (value_qid
               (lower_case_identifier)))
-          (of)
-          (case_of_branch
+          (is)
+          (when_is_branch
             (pattern
               (union_pattern
                 (upper_case_qid
                   (upper_case_identifier))))
             (arrow)
             (list_expr))
-          (case_of_branch
+          (when_is_branch
             (pattern
               (union_pattern
                 (upper_case_qid
@@ -363,13 +363,13 @@ isUpper =
           (lower_case_identifier))))))
 
 ================================================================================
-let with two variables and case
+let with two variables and when
 ================================================================================
 
 init session =
     let
         feedTab =
-            case Session.cred session of
+            when Session.cred session is
                 Just cred ->
                     YourFeed cred
 
@@ -395,8 +395,8 @@ init session =
         (function_declaration_left
           (lower_case_identifier))
         (eq)
-        (case_of_expr
-          (case)
+        (when_is_expr
+          (when)
           (function_call_expr
             (value_expr
               (value_qid
@@ -406,8 +406,8 @@ init session =
             (value_expr
               (value_qid
                 (lower_case_identifier))))
-          (of)
-          (case_of_branch
+          (is)
+          (when_is_branch
             (pattern
               (union_pattern
                 (upper_case_qid
@@ -422,7 +422,7 @@ init session =
               (value_expr
                 (value_qid
                   (lower_case_identifier)))))
-          (case_of_branch
+          (when_is_branch
             (pattern
               (union_pattern
                 (upper_case_qid

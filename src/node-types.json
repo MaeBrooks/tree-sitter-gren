@@ -16,10 +16,6 @@
             "named": true
           },
           {
-            "type": "case_of_expr",
-            "named": true
-          },
-          {
             "type": "char_constant_expr",
             "named": true
           },
@@ -77,6 +73,10 @@
           },
           {
             "type": "value_expr",
+            "named": true
+          },
+          {
+            "type": "when_is_expr",
             "named": true
           }
         ]
@@ -161,10 +161,6 @@
             "named": true
           },
           {
-            "type": "case_of_expr",
-            "named": true
-          },
-          {
             "type": "char_constant_expr",
             "named": true
           },
@@ -227,6 +223,10 @@
           {
             "type": "value_expr",
             "named": true
+          },
+          {
+            "type": "when_is_expr",
+            "named": true
           }
         ]
       }
@@ -236,218 +236,6 @@
     "type": "block_comment",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "case_of_branch",
-    "named": true,
-    "fields": {
-      "expr": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "anonymous_function_expr",
-            "named": true
-          },
-          {
-            "type": "bin_op_expr",
-            "named": true
-          },
-          {
-            "type": "case_of_expr",
-            "named": true
-          },
-          {
-            "type": "char_constant_expr",
-            "named": true
-          },
-          {
-            "type": "field_access_expr",
-            "named": true
-          },
-          {
-            "type": "field_accessor_function_expr",
-            "named": true
-          },
-          {
-            "type": "function_call_expr",
-            "named": true
-          },
-          {
-            "type": "if_else_expr",
-            "named": true
-          },
-          {
-            "type": "let_in_expr",
-            "named": true
-          },
-          {
-            "type": "list_expr",
-            "named": true
-          },
-          {
-            "type": "negate_expr",
-            "named": true
-          },
-          {
-            "type": "number_constant_expr",
-            "named": true
-          },
-          {
-            "type": "operator_as_function_expr",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expr",
-            "named": true
-          },
-          {
-            "type": "record_expr",
-            "named": true
-          },
-          {
-            "type": "string_constant_expr",
-            "named": true
-          },
-          {
-            "type": "unit_expr",
-            "named": true
-          },
-          {
-            "type": "value_expr",
-            "named": true
-          }
-        ]
-      },
-      "pattern": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "pattern",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "arrow",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "case_of_expr",
-    "named": true,
-    "fields": {
-      "branch": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "case_of_branch",
-            "named": true
-          }
-        ]
-      },
-      "expr": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "anonymous_function_expr",
-            "named": true
-          },
-          {
-            "type": "bin_op_expr",
-            "named": true
-          },
-          {
-            "type": "case_of_expr",
-            "named": true
-          },
-          {
-            "type": "char_constant_expr",
-            "named": true
-          },
-          {
-            "type": "field_access_expr",
-            "named": true
-          },
-          {
-            "type": "field_accessor_function_expr",
-            "named": true
-          },
-          {
-            "type": "function_call_expr",
-            "named": true
-          },
-          {
-            "type": "if_else_expr",
-            "named": true
-          },
-          {
-            "type": "let_in_expr",
-            "named": true
-          },
-          {
-            "type": "list_expr",
-            "named": true
-          },
-          {
-            "type": "negate_expr",
-            "named": true
-          },
-          {
-            "type": "number_constant_expr",
-            "named": true
-          },
-          {
-            "type": "operator_as_function_expr",
-            "named": true
-          },
-          {
-            "type": "parenthesized_expr",
-            "named": true
-          },
-          {
-            "type": "record_expr",
-            "named": true
-          },
-          {
-            "type": "string_constant_expr",
-            "named": true
-          },
-          {
-            "type": "unit_expr",
-            "named": true
-          },
-          {
-            "type": "value_expr",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "case",
-          "named": true
-        },
-        {
-          "type": "of",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "char_constant_expr",
@@ -543,6 +331,11 @@
         ]
       }
     }
+  },
+  {
+    "type": "dot",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "exposed_operator",
@@ -664,10 +457,6 @@
             "named": true
           },
           {
-            "type": "case_of_expr",
-            "named": true
-          },
-          {
             "type": "char_constant_expr",
             "named": true
           },
@@ -725,6 +514,10 @@
           },
           {
             "type": "value_expr",
+            "named": true
+          },
+          {
+            "type": "when_is_expr",
             "named": true
           }
         ]
@@ -851,6 +644,7 @@
   {
     "type": "file",
     "named": true,
+    "root": true,
     "fields": {
       "moduleDeclaration": {
         "multiple": false,
@@ -911,10 +705,6 @@
             "named": true
           },
           {
-            "type": "case_of_expr",
-            "named": true
-          },
-          {
             "type": "char_constant_expr",
             "named": true
           },
@@ -968,6 +758,10 @@
           },
           {
             "type": "value_expr",
+            "named": true
+          },
+          {
+            "type": "when_is_expr",
             "named": true
           }
         ]
@@ -1083,10 +877,6 @@
             "named": true
           },
           {
-            "type": "case_of_expr",
-            "named": true
-          },
-          {
             "type": "char_constant_expr",
             "named": true
           },
@@ -1144,6 +934,10 @@
           },
           {
             "type": "value_expr",
+            "named": true
+          },
+          {
+            "type": "when_is_expr",
             "named": true
           }
         ]
@@ -1267,10 +1061,6 @@
             "named": true
           },
           {
-            "type": "case_of_expr",
-            "named": true
-          },
-          {
             "type": "char_constant_expr",
             "named": true
           },
@@ -1328,6 +1118,10 @@
           },
           {
             "type": "value_expr",
+            "named": true
+          },
+          {
+            "type": "when_is_expr",
             "named": true
           }
         ]
@@ -1371,10 +1165,6 @@
             "named": true
           },
           {
-            "type": "case_of_expr",
-            "named": true
-          },
-          {
             "type": "char_constant_expr",
             "named": true
           },
@@ -1432,6 +1222,10 @@
           },
           {
             "type": "value_expr",
+            "named": true
+          },
+          {
+            "type": "when_is_expr",
             "named": true
           }
         ]
@@ -1549,10 +1343,6 @@
           "named": true
         },
         {
-          "type": "case_of_expr",
-          "named": true
-        },
-        {
           "type": "char_constant_expr",
           "named": true
         },
@@ -1610,6 +1400,10 @@
         },
         {
           "type": "value_expr",
+          "named": true
+        },
+        {
+          "type": "when_is_expr",
           "named": true
         }
       ]
@@ -1698,10 +1492,6 @@
             "named": true
           },
           {
-            "type": "case_of_expr",
-            "named": true
-          },
-          {
             "type": "char_constant_expr",
             "named": true
           },
@@ -1759,6 +1549,10 @@
           },
           {
             "type": "value_expr",
+            "named": true
+          },
+          {
+            "type": "when_is_expr",
             "named": true
           }
         ]
@@ -2389,10 +2183,6 @@
             "named": true
           },
           {
-            "type": "case_of_expr",
-            "named": true
-          },
-          {
             "type": "char_constant_expr",
             "named": true
           },
@@ -2450,6 +2240,10 @@
           },
           {
             "type": "value_expr",
+            "named": true
+          },
+          {
+            "type": "when_is_expr",
             "named": true
           }
         ]
@@ -2530,6 +2324,218 @@
     }
   },
   {
+    "type": "when_is_branch",
+    "named": true,
+    "fields": {
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "anonymous_function_expr",
+            "named": true
+          },
+          {
+            "type": "bin_op_expr",
+            "named": true
+          },
+          {
+            "type": "char_constant_expr",
+            "named": true
+          },
+          {
+            "type": "field_access_expr",
+            "named": true
+          },
+          {
+            "type": "field_accessor_function_expr",
+            "named": true
+          },
+          {
+            "type": "function_call_expr",
+            "named": true
+          },
+          {
+            "type": "if_else_expr",
+            "named": true
+          },
+          {
+            "type": "let_in_expr",
+            "named": true
+          },
+          {
+            "type": "list_expr",
+            "named": true
+          },
+          {
+            "type": "negate_expr",
+            "named": true
+          },
+          {
+            "type": "number_constant_expr",
+            "named": true
+          },
+          {
+            "type": "operator_as_function_expr",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expr",
+            "named": true
+          },
+          {
+            "type": "record_expr",
+            "named": true
+          },
+          {
+            "type": "string_constant_expr",
+            "named": true
+          },
+          {
+            "type": "unit_expr",
+            "named": true
+          },
+          {
+            "type": "value_expr",
+            "named": true
+          },
+          {
+            "type": "when_is_expr",
+            "named": true
+          }
+        ]
+      },
+      "pattern": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "pattern",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "arrow",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "when_is_expr",
+    "named": true,
+    "fields": {
+      "branch": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "when_is_branch",
+            "named": true
+          }
+        ]
+      },
+      "expr": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "anonymous_function_expr",
+            "named": true
+          },
+          {
+            "type": "bin_op_expr",
+            "named": true
+          },
+          {
+            "type": "char_constant_expr",
+            "named": true
+          },
+          {
+            "type": "field_access_expr",
+            "named": true
+          },
+          {
+            "type": "field_accessor_function_expr",
+            "named": true
+          },
+          {
+            "type": "function_call_expr",
+            "named": true
+          },
+          {
+            "type": "if_else_expr",
+            "named": true
+          },
+          {
+            "type": "let_in_expr",
+            "named": true
+          },
+          {
+            "type": "list_expr",
+            "named": true
+          },
+          {
+            "type": "negate_expr",
+            "named": true
+          },
+          {
+            "type": "number_constant_expr",
+            "named": true
+          },
+          {
+            "type": "operator_as_function_expr",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expr",
+            "named": true
+          },
+          {
+            "type": "record_expr",
+            "named": true
+          },
+          {
+            "type": "string_constant_expr",
+            "named": true
+          },
+          {
+            "type": "unit_expr",
+            "named": true
+          },
+          {
+            "type": "value_expr",
+            "named": true
+          },
+          {
+            "type": "when_is_expr",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "is",
+          "named": true
+        },
+        {
+          "type": "when",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "&&",
     "named": false
   },
@@ -2563,6 +2569,10 @@
   },
   {
     "type": "-}",
+    "named": false
+  },
+  {
+    "type": ".",
     "named": false
   },
   {
@@ -2650,10 +2660,6 @@
     "named": true
   },
   {
-    "type": "case",
-    "named": true
-  },
-  {
     "type": "close_char",
     "named": true
   },
@@ -2663,10 +2669,6 @@
   },
   {
     "type": "colon",
-    "named": true
-  },
-  {
-    "type": "dot",
     "named": true
   },
   {
@@ -2710,6 +2712,10 @@
     "named": true
   },
   {
+    "type": "is",
+    "named": true
+  },
+  {
     "type": "let",
     "named": false
   },
@@ -2727,10 +2733,6 @@
   },
   {
     "type": "number_literal",
-    "named": true
-  },
-  {
-    "type": "of",
     "named": true
   },
   {
@@ -2767,6 +2769,10 @@
   },
   {
     "type": "upper_case_identifier",
+    "named": true
+  },
+  {
+    "type": "when",
     "named": true
   },
   {

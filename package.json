@@ -19,29 +19,21 @@
     "nan": "^2.18.0"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.20.8"
+    "tree-sitter-cli": "^0.24.0"
   },
   "scripts": {
     "build": "tree-sitter generate",
     "parse-basic": "tree-sitter parse ./examples/basic.gren",
     "parse-test": "tree-sitter parse --debug ./examples/test.gren",
     "test:dev": "npm run build && npm run test-only",
-    "test": "tree-sitter test && script/parse-examples",
-    "test-skip-download": "tree-sitter test && script/parse-examples -s",
-    "test-full": "tree-sitter test && script/parse-examples-full",
-    "test-full-skip-download": "tree-sitter test && script/parse-examples-full -s",
-    "test-only": "tree-sitter test",
+    "test": "npm run test-only && script/parse-examples",
+    "test-skip-download": "npm run test-only && script/parse-examples -s",
+    "test-full": "npm run test-only && script/parse-examples-full",
+    "test-full-skip-download": "npm run test-only && script/parse-examples-full -s",
+    "test-only": "tree-sitter test -r",
     "test-highlighting": "tree-sitter highlight test/highlight/basic.gren",
     "test-tags": "tree-sitter tags test/highlight/basic.gren",
     "generate-wasm": "tree-sitter build-wasm && mv ./tree-sitter-gren.wasm ./docs/js/tree-sitter-gren.wasm"
   },
-  "repository": "https://github.com/MaeBrooks/tree-sitter-gren",
-  "tree-sitter": [
-    {
-      "scope": "source.gren",
-      "file-types": [
-        "gren"
-      ]
-    }
-  ]
+  "repository": "https://github.com/MaeBrooks/tree-sitter-gren"
 }

@@ -1,10 +1,10 @@
 ================================================================================
-Case without branches followed by newline
+When without branches followed by newline
 ================================================================================
 
 -- Works in v4.5.0
 update msg =
-    case msg of
+    when msg is
 
 --------------------------------------------------------------------------------
 
@@ -16,18 +16,18 @@ update msg =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case)
+    (when)
     (value_expr
       (value_qid
         (lower_case_identifier)))
-    (of)))
+    (is)))
 
 ================================================================================
-Case without branches directly on file end without comment before update - Hangs in v4.5.0
+When without branches directly on file end without comment before update - Hangs in v4.5.0
 ================================================================================
 
 update msg =
-    case msg of
+    when msg is
 --------------------------------------------------------------------------------
 
 (file
@@ -37,19 +37,19 @@ update msg =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case)
+    (when)
     (value_expr
       (value_qid
         (lower_case_identifier)))
-    (of)))
+    (is)))
 
 ================================================================================
-Case without branches directly on file end with comment before update
+When without branches directly on file end with comment before update
 ================================================================================
 
 -- Works in v4.5.0
 update msg =
-    case msg of
+    when msg is
 --------------------------------------------------------------------------------
 
 (file
@@ -60,20 +60,20 @@ update msg =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case)
+    (when)
     (value_expr
       (value_qid
         (lower_case_identifier)))
-    (of)))
+    (is)))
 
 ================================================================================
-Case without branches leading with one line comment at file end
+When without branches leading with one line comment at file end
 ================================================================================
 
 -- Hangs in v4.5.0
 update msg =
     -- one line comment
-    case msg of
+    when msg is
 --------------------------------------------------------------------------------
 
 (file
@@ -85,20 +85,20 @@ update msg =
         (lower_case_identifier)))
     (eq)
     (line_comment)
-    (case)
+    (when)
     (value_expr
       (value_qid
         (lower_case_identifier)))
-    (of)))
+    (is)))
 
 ================================================================================
-Case without branches leading with one line comment + newline
+When without branches leading with one line comment + newline
 ================================================================================
 
 -- Works in v4.5.0
 update msg =
     -- one line comment
-    case msg of
+    when msg is
 
 --------------------------------------------------------------------------------
 
@@ -111,19 +111,19 @@ update msg =
         (lower_case_identifier)))
     (eq)
     (line_comment)
-    (case)
+    (when)
     (value_expr
       (value_qid
         (lower_case_identifier)))
-    (of)))
+    (is)))
 
 ================================================================================
-Case without branches followed by new line + space + comment
+When without branches followed by new line + space + comment
 ================================================================================
 
 -- Hangs in v4.5.0
 update msg =
-    case msg of
+    when msg is
  -- Need to use a comment with leading space, because testsuite is removing trailing spaces
 --------------------------------------------------------------------------------
 
@@ -135,20 +135,20 @@ update msg =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case)
+    (when)
     (value_expr
       (value_qid
         (lower_case_identifier)))
-    (of))
+    (is))
   (line_comment))
 
 ================================================================================
-Case without branches followed by new line + without space + last line comment
+When without branches followed by new line + without space + last line comment
 ================================================================================
 
 -- Works in v4.5.0
 update msg =
-    case msg of
+    when msg is
         -- With the comment in the last line, now you can have as much
         -- spaces as you want!
 -- Workaround: Add an one line comment without leading space at the end of file
@@ -162,28 +162,28 @@ update msg =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case)
+    (when)
     (value_expr
       (value_qid
         (lower_case_identifier)))
-    (of))
+    (is))
   (line_comment)
   (line_comment)
   (line_comment))
 
 ================================================================================
-Case followed by comment: not fully indented
+When followed by comment: not fully indented
 ================================================================================
 
 update msg =
-    case msg of
+    when msg is
         Ok _ ->
             "Ok!"
 
         Err _ ->
             "Error!"
 
--- This comment is not part of the case block
+-- This comment is not part of the when block
 --------------------------------------------------------------------------------
 
 (file
@@ -193,13 +193,13 @@ update msg =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -211,7 +211,7 @@ update msg =
           (open_quote)
           (regular_string_part)
           (close_quote)))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -226,11 +226,11 @@ update msg =
   (line_comment))
 
 ================================================================================
-Case followed by comment: indented as sibling
+When followed by comment: indented as sibling
 ================================================================================
 
 update msg =
-    case msg of
+    when msg is
         Ok _ ->
             "Ok!"
 
@@ -248,13 +248,13 @@ update msg =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -266,7 +266,7 @@ update msg =
           (open_quote)
           (regular_string_part)
           (close_quote)))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -282,12 +282,12 @@ update msg =
   (line_comment))
 
 ================================================================================
-Case followed by comment: indented inside case
+When followed by comment: indented inside when
 ================================================================================
 
 -- Correct in v4.5.0
 update msg =
-    case msg of
+    when msg is
         Ok _ ->
             "Ok!"
 
@@ -306,13 +306,13 @@ update msg =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -324,7 +324,7 @@ update msg =
           (open_quote)
           (regular_string_part)
           (close_quote)))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -340,11 +340,11 @@ update msg =
   (line_comment))
 
 ================================================================================
-Case followed by comment: indented inside case branch
+When followed by comment: indented inside when branch
 ================================================================================
 
 update msg =
-    case msg of
+    when msg is
         Ok _ ->
             "Ok!"
 
@@ -362,13 +362,13 @@ update msg =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (value_expr
         (value_qid
           (lower_case_identifier)))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid
@@ -380,7 +380,7 @@ update msg =
           (open_quote)
           (regular_string_part)
           (close_quote)))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (union_pattern
             (upper_case_qid

@@ -3,7 +3,7 @@ Matching a list
 ================================================================================
 
 getFirstMatch state =
-    case state.unvisited of
+    when state.unvisited is
       [] ->
         Just state.value
 
@@ -24,16 +24,16 @@ getFirstMatch state =
       (lower_pattern
         (lower_case_identifier)))
     (eq)
-    (case_of_expr
-      (case)
+    (when_is_expr
+      (when)
       (field_access_expr
         (value_expr
           (value_qid
             (lower_case_identifier)))
         (dot)
         (lower_case_identifier))
-      (of)
-      (case_of_branch
+      (is)
+      (when_is_branch
         (pattern
           (list_pattern))
         (arrow)
@@ -47,7 +47,7 @@ getFirstMatch state =
                 (lower_case_identifier)))
             (dot)
             (lower_case_identifier))))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (list_pattern
             (pattern
@@ -65,7 +65,7 @@ getFirstMatch state =
                 (lower_case_identifier)))
             (dot)
             (lower_case_identifier))))
-      (case_of_branch
+      (when_is_branch
         (pattern
           (anything_pattern
             (underscore)))

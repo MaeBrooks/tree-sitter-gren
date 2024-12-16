@@ -28,7 +28,7 @@ update : Msg -> Model
 --            ^ keyword.operator.arrow.gren
 
 update msg model =
-    case msg of
+    when msg is
     --       ^ keyword.control.gren
         Increment ->
                 -- ^ keyword.operator.arrow.gren

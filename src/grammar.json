@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "gren",
   "word": "lower_case_identifier",
   "rules": {
@@ -1278,7 +1279,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "case_of_expr"
+          "name": "when_is_expr"
         },
         {
           "type": "SYMBOL",
@@ -1942,7 +1943,7 @@
         }
       ]
     },
-    "case_of_expr": {
+    "when_is_expr": {
       "type": "CHOICE",
       "members": [
         {
@@ -1954,7 +1955,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "case"
+              "name": "when"
             },
             {
               "type": "FIELD",
@@ -1966,7 +1967,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "of"
+              "name": "is"
             },
             {
               "type": "SYMBOL",
@@ -1977,7 +1978,7 @@
               "name": "branch",
               "content": {
                 "type": "SYMBOL",
-                "name": "case_of_branch"
+                "name": "when_is_branch"
               }
             },
             {
@@ -1985,7 +1986,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_more_case_of_branches"
+                  "name": "_more_when_is_branches"
                 },
                 {
                   "type": "BLANK"
@@ -2015,7 +2016,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "case"
+              "name": "when"
             },
             {
               "type": "FIELD",
@@ -2027,7 +2028,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "of"
+              "name": "is"
             },
             {
               "type": "SYMBOL",
@@ -2038,7 +2039,7 @@
               "name": "branch",
               "content": {
                 "type": "SYMBOL",
-                "name": "case_of_branch"
+                "name": "when_is_branch"
               }
             },
             {
@@ -2046,7 +2047,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_more_case_of_branches"
+                  "name": "_more_when_is_branches"
                 },
                 {
                   "type": "BLANK"
@@ -2061,7 +2062,7 @@
         }
       ]
     },
-    "_more_case_of_branches": {
+    "_more_when_is_branches": {
       "type": "PREC_DYNAMIC",
       "value": 6,
       "content": {
@@ -2078,14 +2079,14 @@
               "name": "branch",
               "content": {
                 "type": "SYMBOL",
-                "name": "case_of_branch"
+                "name": "when_is_branch"
               }
             }
           ]
         }
       }
     },
-    "case_of_branch": {
+    "when_is_branch": {
       "type": "SEQ",
       "members": [
         {
@@ -2694,13 +2695,13 @@
       "type": "STRING",
       "value": "exposing"
     },
-    "case": {
+    "when": {
       "type": "STRING",
-      "value": "case"
+      "value": "when"
     },
-    "of": {
+    "is": {
       "type": "STRING",
-      "value": "of"
+      "value": "is"
     },
     "type": {
       "type": "STRING",
@@ -2871,7 +2872,7 @@
       "function_call_expr"
     ],
     [
-      "case_of_expr"
+      "when_is_expr"
     ],
     [
       "_function_call_target",
@@ -2904,4 +2905,3 @@
   "inline": [],
   "supertypes": []
 }
-

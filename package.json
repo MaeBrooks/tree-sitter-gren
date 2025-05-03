@@ -33,7 +33,7 @@
     "test-only": "tree-sitter test -r",
     "test-highlighting": "tree-sitter highlight test/highlight/basic.gren",
     "test-tags": "tree-sitter tags test/highlight/basic.gren",
-    "generate-wasm": "tree-sitter build-wasm && mv ./tree-sitter-gren.wasm ./docs/js/tree-sitter-gren.wasm"
+    "generate-wasm": "tree-sitter build --wasm && mv ./tree-sitter-gren.wasm ./docs/js/tree-sitter-gren.wasm"
   },
   "repository": "https://github.com/MaeBrooks/tree-sitter-gren"
 }

@@ -1,0 +1,9 @@
+(value_declaration) @indent
+(type_declaration) @indent
+(type_alias_declaration) @indent
+(let_in_expr) @indent
+(when_is_expr) @indent
+(when_is_branch) @indent
+(anonymous_function_expr) @indent
+(record_expr) @indent
+(list_expr) @indent

@@ -148,7 +148,7 @@ Then run `:TSInstall gren`.
 
 ### Zed
 
-This repository includes a complete Zed extension at `editors/zed/` with syntax highlighting, indentation, brackets, and outline support.
+This repository includes a Zed extension at `editors/zed/` with syntax highlighting, indentation, brackets, and outline support. Zed clones the grammar source directly from the repository URL specified in `extension.toml`.
 
 **Install as a dev extension:**
 
@@ -157,17 +157,11 @@ This repository includes a complete Zed extension at `editors/zed/` with syntax 
 3. Run "zed: install dev extension"
 4. Select the `editors/zed/` directory from this repository
 
-The extension bundles its own copy of the grammar, query files, and `gren.wasm`. When the grammar is updated, run `npm run build` to regenerate and sync the files into the extension directory, then restart Zed or reload your Gren extension.
-
 **Extension structure:**
 
 ```
 editors/zed/
-  extension.toml           Extension manifest
-  grammars/gren/           Grammar source (synced from root by npm run build)
-    grammar.js
-    src/
-    test/corpus/
+  extension.toml           Extension manifest (points Zed at the grammar repo)
   languages/gren/
     config.toml            Language config (file type, comments, brackets)
     highlights.scm         Syntax highlighting queries

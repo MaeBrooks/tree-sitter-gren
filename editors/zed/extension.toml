@@ -1,0 +1,11 @@
+id = "gren"
+name = "Gren"
+version = "0.1.0"
+schema_version = 1
+authors = ["Mae Brooks"]
+description = "Gren language support for Zed"
+repository = "https://github.com/MaeBrooks/tree-sitter-gren"
+
+[grammars.gren]
+repository = "https://github.com/MaeBrooks/tree-sitter-gren"
+rev = "main"

@@ -45,8 +45,9 @@ letExample =
       (value_declaration
         (pattern
           (record_pattern
-            (lower_pattern
-              (lower_case_identifier))))
+            (record_pattern_field
+              (lower_pattern
+                (lower_case_identifier)))))
         (eq)
         (function_call_expr
           (value_expr
@@ -85,8 +86,9 @@ letExample =
       (value_declaration
         (pattern
           (record_pattern
-            (lower_pattern
-              (lower_case_identifier))))
+            (record_pattern_field
+              (lower_pattern
+                (lower_case_identifier)))))
         (eq)
         (function_call_expr
           (value_expr
@@ -125,8 +127,9 @@ letExample =
       (value_declaration
         (pattern
           (record_pattern
-            (lower_pattern
-              (lower_case_identifier))))
+            (record_pattern_field
+              (lower_pattern
+                (lower_case_identifier)))))
         (eq)
         (function_call_expr
           (value_expr
@@ -516,8 +519,9 @@ letExample =
       (value_declaration
         (pattern
           (record_pattern
-            (lower_pattern
-              (lower_case_identifier))))
+            (record_pattern_field
+              (lower_pattern
+                (lower_case_identifier)))))
         (eq)
         (function_call_expr
           (value_expr
@@ -916,14 +920,18 @@ base col =
       (value_declaration
         (pattern
           (record_pattern
-            (lower_pattern
-              (lower_case_identifier))
-            (lower_pattern
-              (lower_case_identifier))
-            (lower_pattern
-              (lower_case_identifier))
-            (lower_pattern
-              (lower_case_identifier))))
+            (record_pattern_field
+              (lower_pattern
+                (lower_case_identifier)))
+            (record_pattern_field
+              (lower_pattern
+                (lower_case_identifier)))
+            (record_pattern_field
+              (lower_pattern
+                (lower_case_identifier)))
+            (record_pattern_field
+              (lower_pattern
+                (lower_case_identifier)))))
         (eq)
         (function_call_expr
           (value_expr

@@ -8,7 +8,7 @@ view model =
         ]
 
 --------------------------------------------------------------------------------
- 
+
 (file
   (value_declaration
     (function_declaration_left
@@ -99,14 +99,14 @@ defaultPage = Home
 --------------------------------------------------------------------------------
 
 (file
-  (ERROR
-    (import)
-    (upper_case_qid
-      (upper_case_identifier))
-    (as))
   (import_clause
     (import)
     (upper_case_qid
+      (upper_case_identifier))
+    (as_clause
+      (as)
+      (ERROR
+        (lower_case_identifier))
       (upper_case_identifier))
     (exposing_list
       (exposing)

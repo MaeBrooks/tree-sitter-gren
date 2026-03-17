@@ -954,8 +954,9 @@ makeEdit cursor desc =
                         (upper_case_qid
                           (upper_case_identifier)))
                       (record_expr
-                        (record_base_identifier
-                          (lower_case_identifier))
+                        (value_expr
+                          (value_qid
+                            (lower_case_identifier)))
                         (field
                           (lower_case_identifier)
                           (eq)
@@ -1152,10 +1153,12 @@ flipBy how (Plane { width, height } as plane) =
           (upper_case_qid
             (upper_case_identifier))
           (record_pattern
-            (lower_pattern
-              (lower_case_identifier))
-            (lower_pattern
-              (lower_case_identifier))))
+            (record_pattern_field
+              (lower_pattern
+                (lower_case_identifier)))
+            (record_pattern_field
+              (lower_pattern
+                (lower_case_identifier)))))
         (as)
         (lower_pattern
           (lower_case_identifier))))
@@ -1186,10 +1189,12 @@ flipBy how (Plane { width, height } as plane) =
               (backslash)
               (pattern
                 (record_pattern
-                  (lower_pattern
-                    (lower_case_identifier))
-                  (lower_pattern
-                    (lower_case_identifier))))
+                  (record_pattern_field
+                    (lower_pattern
+                      (lower_case_identifier)))
+                  (record_pattern_field
+                    (lower_pattern
+                      (lower_case_identifier)))))
               (arrow)
               (record_expr
                 (field
@@ -1224,10 +1229,12 @@ flipBy how (Plane { width, height } as plane) =
               (backslash)
               (pattern
                 (record_pattern
-                  (lower_pattern
-                    (lower_case_identifier))
-                  (lower_pattern
-                    (lower_case_identifier))))
+                  (record_pattern_field
+                    (lower_pattern
+                      (lower_case_identifier)))
+                  (record_pattern_field
+                    (lower_pattern
+                      (lower_case_identifier)))))
               (arrow)
               (record_expr
                 (field

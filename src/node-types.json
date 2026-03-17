@@ -235,6 +235,7 @@
   {
     "type": "block_comment",
     "named": true,
+    "extra": true,
     "fields": {}
   },
   {
@@ -1699,7 +1700,19 @@
         "required": false,
         "types": [
           {
+            "type": "field_access_expr",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expr",
+            "named": true
+          },
+          {
             "type": "record_base_identifier",
+            "named": true
+          },
+          {
+            "type": "value_expr",
             "named": true
           }
         ]
@@ -1725,11 +1738,51 @@
         "required": true,
         "types": [
           {
-            "type": "lower_pattern",
+            "type": "record_pattern_field",
             "named": true
           }
         ]
       }
+    }
+  },
+  {
+    "type": "record_pattern_field",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "lower_case_identifier",
+            "named": true
+          }
+        ]
+      },
+      "pattern": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "pattern",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "eq",
+          "named": true
+        },
+        {
+          "type": "lower_pattern",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1741,7 +1794,19 @@
         "required": false,
         "types": [
           {
+            "type": "field_access_expr",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expr",
+            "named": true
+          },
+          {
             "type": "record_base_identifier",
+            "named": true
+          },
+          {
+            "type": "value_expr",
             "named": true
           }
         ]
@@ -2721,7 +2786,8 @@
   },
   {
     "type": "line_comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "lower_case_identifier",

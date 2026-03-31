@@ -410,7 +410,7 @@ unsigned tree_sitter_gren_external_scanner_serialize(void *payload,
   }
   size += indent_length_length;
 
-  int iter = 1;
+  uint32_t iter = 1;
   for (; iter != scanner->indents.len &&
          size < TREE_SITTER_SERIALIZATION_BUFFER_SIZE;
        ++iter) {
